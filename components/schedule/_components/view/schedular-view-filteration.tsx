@@ -68,7 +68,7 @@ export default function SchedulerViewFilteration({
     showAddEventModal({
       title:
         CustomComponents?.CustomEventModal?.CustomAddEventModal?.title ||
-        "Add Event 2",
+        "Crear cita médica",
       body: (
         <AddEventModal
           CustomAddEventModal={
@@ -122,7 +122,7 @@ export default function SchedulerViewFilteration({
                   ) : (
                     <div className="flex items-center space-x-2">
                       <CalendarDaysIcon size={15} />
-                      <span>Day</span>
+                      <span>Día</span>
                     </div>
                   )
                 }
@@ -153,7 +153,7 @@ export default function SchedulerViewFilteration({
                   ) : (
                     <div className="flex items-center space-x-2">
                       <BsCalendarWeek />
-                      <span>Week</span>
+                      <span>Semana</span>
                     </div>
                   )
                 }
@@ -184,7 +184,7 @@ export default function SchedulerViewFilteration({
                   ) : (
                     <div className="flex items-center space-x-2">
                       <BsCalendarMonth />
-                      <span>Month</span>
+                      <span>Mes</span>
                     </div>
                   )
                 }
@@ -226,7 +226,7 @@ export default function SchedulerViewFilteration({
                 color="primary"
                 startContent={<Calendar />}
               >
-                Add Event
+                Añadir cita médica
               </Button>
             )
           }

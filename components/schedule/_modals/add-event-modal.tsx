@@ -127,16 +127,16 @@ export default function AddEventModal({
         <>
           <Input
             {...register("title")}
-            label="Event Name"
-            placeholder="Enter event name"
+            label="Cita medica"
+            placeholder="Nombre del paciente"
             variant="bordered"
             isInvalid={!!errors.title}
             errorMessage={errors.title?.message}
           />
           <Textarea
             {...register("description")}
-            label="Description"
-            placeholder="Enter event description"
+            label="Descripción"
+            placeholder="Ingresa la descripción de la cita"
             variant="bordered"
           />
           <SelectDate data={data} setValue={setValue} />
@@ -186,10 +186,10 @@ export default function AddEventModal({
 
           <ModalFooter className="px-0">
             <Button color="danger" variant="light" onPress={onClose}>
-              Cancel
+              Cancelar
             </Button>
             <Button color="primary" type="submit">
-              Save Event
+              Añadir cita
             </Button>
           </ModalFooter>
         </>

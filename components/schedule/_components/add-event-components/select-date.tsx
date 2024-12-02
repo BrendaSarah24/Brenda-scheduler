@@ -2,11 +2,13 @@
 
 import { EventFormData } from "@/types";
 import { parseDate, CalendarDate, Time } from "@internationalized/date";
-import { DateRangePicker } from "@nextui-org/date-picker";
+import { DatePicker, DateRangePicker } from "@nextui-org/date-picker";
 import { TimeInput } from "@nextui-org/date-input";
 
 import React, { useEffect, useState } from "react";
 import { UseFormSetValue } from "react-hook-form";
+import {I18nProvider} from "@react-aria/i18n";
+
 
 function getFormattedDate(date: Date) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(
@@ -70,34 +72,49 @@ export default function SelectDate({
   return (
     <div>
       <div className="w-full flex gap-4 max-w-full flex-wrap">
-        <DateRangePicker
-          label="Stay duration"
+      <I18nProvider locale="es-MX">
+        {/* <DateRangePicker
+          label="Día de la cita"
           isRequired
-          value={{ start: dateState.startDate, end: dateState.endDate }}
+          value={{start: dateState.startDate, end: dateState.endDate }}
           className="w-full"
           onChange={(value) => {
             const start = value?.start;
             const end = value?.end;
 
-            const startDate = new Date(
+            const selectedDate = new Date(
               start?.year || 0,
               (start?.month || 1) - 1,
               start?.day || 1
             );
 
-            const endDate = new Date(
-              end?.year || 0,
-              (end?.month || 1) - 1,
-              end?.day || 1
-            );
 
             setDateState({
               ...dateState,
-              startDate: parseDate(getFormattedDate(startDate)),
-              endDate: parseDate(getFormattedDate(endDate)),
+              startDate: parseDate(getFormattedDate(selectedDate)),
+              endDate: parseDate(getFormattedDate(selectedDate)),
             });
           }}
-        />
+        /> */}
+        <DatePicker 
+        label="Día de la cita" 
+        isRequired  
+        value={dateState.startDate}
+        className="w-full" 
+        onChange={(value)=>{
+          const selectedDate = new Date(
+            value?.year || 0,
+            (value?.month || 1) - 1,
+            value?.day || 1
+          );
+          setDateState({
+            ...dateState,
+            startDate: parseDate(getFormattedDate(selectedDate)),
+            endDate: parseDate(getFormattedDate(selectedDate)),
+          });
+
+        }}/>
+        </I18nProvider>
 
         <div className="flex flex-wrap gap-4">
           <TimeInput
